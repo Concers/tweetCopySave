@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Replies Saver</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 12px; min-width: 260px; }
+    .row { display: flex; gap: 8px; margin-top: 8px; }
+    #status { margin-top: 10px; font-size: 12px; color: #444; }
+    input[type=number] { width: 90px; }
+    button { padding: 6px 10px; }
+  </style>
+</head>
+<body>
+  <div>
+    <label>Limit
+      <input id="limit" type="number" min="1" step="1" value="500" />
+    </label>
+  </div>
+  <div class="row">
+    <label style="display:flex;align-items:center;gap:6px;">
+      <input id="noLimit" type="checkbox" /> No limit (scroll until Stop)
+    </label>
+  </div>
+  <div class="row">
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="saveJsonBtn">Save JSON</button>
+    <button id="savePdfBtn">Save PDF</button>
+    <button id="openViewerBtn">Open Viewer</button>
+  </div>
+  <div id="status">Open a tweet page (twitter.com or x.com) and click Start.</div>
+  <script src="popup.js"></script>
+</body>
+</html>

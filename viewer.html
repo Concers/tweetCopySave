@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Replies Viewer</title>
+  <link rel="stylesheet" href="tw-lite.css" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
+    header { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    input[type=file] { max-width: 280px; }
+    input[type=text] { padding: 6px 8px; min-width: 220px; }
+    select, button { padding: 6px 8px; }
+    .stats { margin-top: 8px; color: #555; font-size: 12px; }
+    .list { display: grid; gap: 12px; margin-top: 16px; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; }
+    .card.main { border-color: #1d9bf0; border-left: 4px solid #1d9bf0; background: rgba(29,155,240,0.08); }
+    .card.reply { border-left: 4px solid rgba(0,0,0,0.1); background: rgba(0,0,0,0.02); }
+    .row { display: flex; align-items: center; gap: 8px; }
+    .user { font-weight: 600; }
+    .handle { color: #666; font-size: 12px; }
+    .date { margin-left: auto; color: #666; font-size: 12px; }
+    .content { white-space: pre-wrap; margin-top: 8px; line-height: 1.4; }
+    .counts { margin-top: 8px; color: #444; font-size: 12px; display: flex; gap: 12px; }
+
+    @media (prefers-color-scheme: dark) {
+      .card { border-color: #333; }
+      .card.reply { background: rgba(255,255,255,0.04); border-left-color: rgba(255,255,255,0.18); }
+      .card.main { background: rgba(29,155,240,0.20); }
+      .handle, .date { color: #aaa; }
+      .stats { color: #aaa; }
+    }
+  </style>
+</head>
+<body>
+  <header class="flex gap-3 flex-wrap items-center">
+    <input id="file" type="file" accept="application/json" class="input" />
+    <input id="q" type="text" placeholder="Search content or @user" class="input" />
+    <select id="sortBy" class="select">
+      <option value="dateDesc">Date ↓</option>
+      <option value="dateAsc">Date ↑</option>
+      <option value="likesDesc">Likes ↓</option>
+      <option value="likesAsc">Likes ↑</option>
+      <option value="retweetsDesc">Retweets ↓</option>
+      <option value="retweetsAsc">Retweets ↑</option>
+    </select>
+    <button id="clear" class="btn">Clear</button>
+  </header>
+  <div class="stats text-slate-600 text-sm mt-2" id="stats">Load a JSON file exported by the extension.</div>
+  <section class="list grid gap-3 mt-4" id="list"></section>
+  <script src="viewer.js"></script>
+</body>
+</html>
